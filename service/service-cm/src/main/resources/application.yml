@@ -1,0 +1,18 @@
+ server:
+   port: 8202
+
+ spring:
+   application:
+     name: service-cm
+   profiles:
+     active: dev   # 开发环境
+   datasource:
+     username: root
+     password: root
+     url: jdbc:mysql://localhost:3306/yygh_cmn?characterEncoding=utf-8&useSSL=false
+     driver-class-name: com.mysql.jdbc.Driver
+  # json的全局返回格式
+   jackson:
+     time-zone: GMT+8
+     date-format: yyy-MM-dd HH:mm:dd
+
