@@ -1,18 +1,52 @@
- server:
-   port: 8202
+# 端口
+server:
+  port: 8202
+spring:
+  application:
+    # 服务名
+    name: service-cmn
+  # 环境名
+  profiles:
+    active: dev
+  # 数据库连接
+  datasource:
+    url: jdbc:mysql://localhost:3306/yygh_cmn?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  #json的全局时间返回格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  #nacos地址
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    timeout: 18000000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
 
- spring:
-   application:
-     name: service-cm
-   profiles:
-     active: dev   # 开发环境
-   datasource:
-     username: root
-     password: root
-     url: jdbc:mysql://localhost:3306/yygh_cmn?characterEncoding=utf-8&useSSL=false
-     driver-class-name: com.mysql.jdbc.Driver
-  # json的全局返回格式
-   jackson:
-     time-zone: GMT+8
-     date-format: yyy-MM-dd HH:mm:dd
-
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#  # mongodb地址
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: yygh_hosp
+#  # rabbitMQ配置
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: root
+#    password: root
+# 配置mybatis文件
+mybatis-plus:
+  mapper-locations: classpath:com/atguigu/yygh/mapper/xml/*.xml

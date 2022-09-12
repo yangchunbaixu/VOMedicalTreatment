@@ -9,8 +9,8 @@ public final class MD5 {
 
     public static String encrypt(String strSrc) {
         try {
-            char hexChars[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8',
-                    '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+            char hexChars[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8',
+                    '9', 'a', 'b', 'c', 'd', 'e', 'f'};
             byte[] bytes = strSrc.getBytes();
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(bytes);
@@ -32,7 +32,7 @@ public final class MD5 {
 
     public static void main(String[] args) {
         Random random = new Random();
-        for (int i = 0; i <10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println(encrypt(System.currentTimeMillis() + "" + random.nextInt(1000)));
         }
     }

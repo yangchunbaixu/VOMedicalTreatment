@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 public enum OrderStatusEnum {
-    UNPAID(0,"预约成功，待支付"),
-    PAID(1,"已支付" ),
-    GET_NUMBER(2,"已取号" ),
-    CANCLE(-1,"取消预约"),
+    UNPAID(0, "预约成功，待支付"),
+    PAID(1, "已支付"),
+    GET_NUMBER(2, "已取号"),
+    CANCLE(-1, "取消预约"),
     ;
 
     private Integer status;
-    private String comment ;
+    private String comment;
 
     public static String getStatusNameByStatus(Integer status) {
         OrderStatusEnum arrObj[] = OrderStatusEnum.values();
@@ -25,11 +25,11 @@ public enum OrderStatusEnum {
         return "";
     }
 
-    public static List<Map<String,Object>> getStatusList() {
-        List<Map<String,Object>> list = new ArrayList<>();
+    public static List<Map<String, Object>> getStatusList() {
+        List<Map<String, Object>> list = new ArrayList<>();
         OrderStatusEnum arrObj[] = OrderStatusEnum.values();
         for (OrderStatusEnum obj : arrObj) {
-            Map<String,Object> map = new HashMap<>();
+            Map<String, Object> map = new HashMap<>();
             map.put("status", obj.getStatus());
             map.put("comment", obj.getComment());
             list.add(map);
@@ -37,8 +37,8 @@ public enum OrderStatusEnum {
         return list;
     }
 
-    OrderStatusEnum(Integer status, String comment ){
-        this.comment=comment;
+    OrderStatusEnum(Integer status, String comment) {
+        this.comment = comment;
         this.status = status;
     }
 

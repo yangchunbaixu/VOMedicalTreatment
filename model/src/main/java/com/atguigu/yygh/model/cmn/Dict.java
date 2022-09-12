@@ -44,7 +44,7 @@ public class Dict {
 
     @ApiModelProperty(value = "其他参数")
     @TableField(exist = false)
-    private Map<String,Object> param = new HashMap<>();
+    private Map<String, Object> param = new HashMap<>();
 
     @ApiModelProperty(value = "上级id")
     @TableField("parent_id")
@@ -63,7 +63,7 @@ public class Dict {
     private String dictCode;
 
     @ApiModelProperty(value = "是否包含子节点")
-    @TableField(exist = false)
+    @TableField(exist = false)  //为false则不会查找表中的这个字段
     private boolean hasChildren;
 
 }

@@ -29,6 +29,7 @@ public class MybatisPlusConfig {
 
     /**
      * 乐观锁配置
+     *
      * @return
      */
     @Bean

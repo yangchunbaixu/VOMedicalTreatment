@@ -49,20 +49,20 @@
             <optional>true</optional>
         </dependency>
         <!-- 服务调用feign -->
-     <!--   <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        &lt;!&ndash; 服务注册 &ndash;&gt;
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        &lt;!&ndash; 流量控制 &ndash;&gt;
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>-->
+        <!--   <dependency>
+               <groupId>org.springframework.cloud</groupId>
+               <artifactId>spring-cloud-starter-openfeign</artifactId>
+           </dependency>
+           &lt;!&ndash; 服务注册 &ndash;&gt;
+           <dependency>
+               <groupId>com.alibaba.cloud</groupId>
+               <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+           </dependency>
+           &lt;!&ndash; 流量控制 &ndash;&gt;
+           <dependency>
+               <groupId>com.alibaba.cloud</groupId>
+               <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+           </dependency>-->
     </dependencies>
     <build>
         <plugins>
@@ -83,7 +83,8 @@
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
-                <includes> <include>**/*.yml</include>
+                <includes>
+                    <include>**/*.yml</include>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>

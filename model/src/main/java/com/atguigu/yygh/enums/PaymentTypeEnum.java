@@ -1,8 +1,8 @@
 package com.atguigu.yygh.enums;
 
 public enum PaymentTypeEnum {
-    ALIPAY(1,"支付宝"),
-    WEIXIN(2,"微信" );
+    ALIPAY(1, "支付宝"),
+    WEIXIN(2, "微信");
 
     public Integer getStatus() {
         return status;
@@ -12,13 +12,13 @@ public enum PaymentTypeEnum {
         this.status = status;
     }
 
-    private Integer status ;
-    private String comment ;
+    private Integer status;
+    private String comment;
 
 
-    PaymentTypeEnum(Integer status, String comment ){
+    PaymentTypeEnum(Integer status, String comment) {
         this.status = status;
-        this.comment=comment;
+        this.comment = comment;
     }
 
     public String getComment() {

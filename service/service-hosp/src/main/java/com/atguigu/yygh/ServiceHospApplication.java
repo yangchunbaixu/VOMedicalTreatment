@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component;
 @ComponentScan(basePackages = "com.atguigu")
 public class ServiceHospApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceHospApplication.class,args);
+        SpringApplication.run(ServiceHospApplication.class, args);
     }
 }

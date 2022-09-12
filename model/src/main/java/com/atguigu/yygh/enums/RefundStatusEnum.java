@@ -1,10 +1,10 @@
 package com.atguigu.yygh.enums;
 
 public enum RefundStatusEnum {
-    UNREFUND(1,"退款中"),
-    REFUND(2,"已退款");
+    UNREFUND(1, "退款中"),
+    REFUND(2, "已退款");
 
-    private Integer status ;
+    private Integer status;
 
     public Integer getStatus() {
         return status;
@@ -22,11 +22,11 @@ public enum RefundStatusEnum {
         this.name = name;
     }
 
-    private String name ;
+    private String name;
 
     RefundStatusEnum(Integer status, String name) {
         this.status = status;
-        this.name=name;
+        this.name = name;
     }
 
 }

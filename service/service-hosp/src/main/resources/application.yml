@@ -3,7 +3,7 @@ server:
   port: 8201
 spring:
   application:
-   # 服务名
+    # 服务名
     name: service-hosp
   # 环境名
   profiles:
@@ -18,17 +18,28 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    timeout: 18000000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
   #nacos地址
 #  cloud:
 #    nacos:
 #      discovery:
 #        server-addr: 127.0.0.1:8848
 #  # mongodb地址
-#  data:
-#    mongodb:
-#      host: localhost
-#      port: 27017
-#      database: yygh_hosp
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: yygh_hosp
 #  # rabbitMQ配置
 #  rabbitmq:
 #    host: 127.0.0.1

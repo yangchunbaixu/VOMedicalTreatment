@@ -16,6 +16,11 @@
     <description>service-cmn</description>
 
     <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -27,8 +32,6 @@
             </plugin>
         </plugins>
     </build>
-
-
 
 
 </project>

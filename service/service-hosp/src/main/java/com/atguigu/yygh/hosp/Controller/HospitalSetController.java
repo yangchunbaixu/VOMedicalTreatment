@@ -28,19 +28,18 @@ public class HospitalSetController {
 
     @ApiOperation("获取所有配置")
     @GetMapping("findAll")
-    public List<HospitalSet> findAll(){
+    public List<HospitalSet> findAll() {
         List<HospitalSet> list = hospitalSetService.list();
         return list;
     }
 
     @ApiOperation("删除医院配置")
     @DeleteMapping("{id}")
-    public Result removeHospSet(@PathVariable Long id){
+    public Result removeHospSet(@PathVariable Long id) {
         boolean removeById = hospitalSetService.removeById(id);
-        if (removeById){
+        if (removeById) {
             return Result.ok();
-        }
-        else {
+        } else {
             return Result.fail();
         }
     }
@@ -53,16 +52,16 @@ public class HospitalSetController {
                                   @RequestBody
                                           (required = false) HospitalSetQueryVo hospitalSetQueryVo) {
         //创建page对象，传递当前页，每页记录数
-        Page<HospitalSet> page = new Page<>(current,limit);
+        Page<HospitalSet> page = new Page<>(current, limit);
         //构建条件
         QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();
         String hosname = hospitalSetQueryVo.getHosname();//医院名称
         String hoscode = hospitalSetQueryVo.getHoscode();//医院编号
-        if(!StringUtils.isEmpty(hosname)) {
-            wrapper.like("hosname",hospitalSetQueryVo.getHosname());
+        if (!StringUtils.isEmpty(hosname)) {
+            wrapper.like("hosname", hospitalSetQueryVo.getHosname());
         }
-        if(!StringUtils.isEmpty(hoscode)) {
-            wrapper.eq("hoscode",hospitalSetQueryVo.getHoscode());
+        if (!StringUtils.isEmpty(hoscode)) {
+            wrapper.eq("hoscode", hospitalSetQueryVo.getHoscode());
         }
         //调用方法实现分页查询
         Page<HospitalSet> pageHospitalSet = hospitalSetService.page(page, wrapper);
@@ -71,32 +70,31 @@ public class HospitalSetController {
     }
 
 
-
     /**
-     *  添加医院设置
+     * 添加医院设置
+     *
      * @param hospitalSet 输入参数
-     * @return  返回参数
+     * @return 返回参数
      */
     @ApiOperation("添加医院设置")
     @PostMapping("/saveHospitalSet")
-    public Result saveHospitalSet(@RequestBody HospitalSet hospitalSet){
+    public Result saveHospitalSet(@RequestBody HospitalSet hospitalSet) {
         // 设置状态，1为添加，0不能
         hospitalSet.setStatus(1);
         // 签名密钥
         Random random = new Random();
         // 添加密钥
-        hospitalSet.setSignKey(MD5.encrypt(System.currentTimeMillis() + ""+ random.nextInt(1000)));
+        hospitalSet.setSignKey(MD5.encrypt(System.currentTimeMillis() + "" + random.nextInt(1000)));
         //调用server
         boolean save = hospitalSetService.save(hospitalSet);
-        if (save){
-            return  Result.ok();
-        }else{
+        if (save) {
+            return Result.ok();
+        } else {
             return Result.fail();
         }
     }
 
     /**
-     *
      * @param id 医院id
      * @return 返回医院信息
      */
@@ -109,48 +107,46 @@ public class HospitalSetController {
 
     @ApiOperation("修改医院信息")
     @PostMapping("/updateHospitalSet")
-    public Result updateHospitalSet(@RequestBody HospitalSet hospitalSet){
+    public Result updateHospitalSet(@RequestBody HospitalSet hospitalSet) {
         boolean flag = hospitalSetService.updateById(hospitalSet);
-        if (flag){
+        if (flag) {
             return Result.ok();
-        }else{
+        } else {
             return Result.fail();
         }
     }
 
     /**
-     *
      * @return 批量删除，返回信息
      */
     @ApiOperation("批量删除医院设置")
     @DeleteMapping("/batchRemove")
-    public Result batchRemove(@RequestBody List<Long> list){
+    public Result batchRemove(@RequestBody List<Long> list) {
         hospitalSetService.removeByIds(list);
         return Result.ok();
     }
 
     /**
-     *
-     * @param id   医院设置的id
-     * @param status  医院的状态是否是可编辑的
-     * @return  返回结果
+     * @param id     医院设置的id
+     * @param status 医院的状态是否是可编辑的
+     * @return 返回结果
      */
     @ApiOperation("医院设置锁定和解锁")
     @PutMapping("lockHospitalSet/{id}/{status}")
     public Result lockHospitalSet(@PathVariable Long id,
-                                  @PathVariable Integer status){
+                                  @PathVariable Integer status) {
         // 根据id查询单个医院的设置信息
         HospitalSet hospitalSet = hospitalSetService.getById(id);
         // 设置状态
         hospitalSet.setStatus(status);
         // 调用方法
         hospitalSetService.updateById(hospitalSet);
-        return  Result.ok();
+        return Result.ok();
     }
 
     @ApiOperation("发送key")
     @PutMapping("sendKey/{id}")
-    public Result lockHospitalSet(@PathVariable Long id ){
+    public Result lockHospitalSet(@PathVariable Long id) {
         HospitalSet hospitalSet = hospitalSetService.getById(id);
         String signKey = hospitalSet.getSignKey();
         String hoscode = hospitalSet.getHoscode();

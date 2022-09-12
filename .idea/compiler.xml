@@ -12,14 +12,19 @@
         <module name="service-cm" />
         <module name="service-util" />
         <module name="service-hosp" />
+        <module name="hospital-manage" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mongodb" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="VOMedicalTreatment" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="common-util" options="-parameters" />
+      <module name="hospital-manage" options="-parameters" />
       <module name="model" options="-parameters" />
       <module name="service" options="-parameters" />
       <module name="service-cm" options="-parameters" />
