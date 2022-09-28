@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common-util" />
-        <module name="model" />
         <module name="service-cm" />
+        <module name="service-cmn-client" />
+        <module name="model" />
         <module name="service-util" />
         <module name="service-hosp" />
         <module name="hospital-manage" />
@@ -27,7 +28,9 @@
       <module name="hospital-manage" options="-parameters" />
       <module name="model" options="-parameters" />
       <module name="service" options="-parameters" />
+      <module name="service-client" options="" />
       <module name="service-cm" options="-parameters" />
+      <module name="service-cmn-client" options="-parameters" />
       <module name="service-hosp" options="-parameters" />
       <module name="service-util" options="-parameters" />
     </option>

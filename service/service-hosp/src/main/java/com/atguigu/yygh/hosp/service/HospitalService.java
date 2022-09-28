@@ -1,6 +1,9 @@
 package com.atguigu.yygh.hosp.service;
 
 import com.atguigu.yygh.model.hosp.Hospital;
+import com.atguigu.yygh.vo.hosp.HospitalQueryVo;
+import com.atguigu.yygh.vo.hosp.HospitalSetQueryVo;
+import org.springframework.data.domain.*;
 
 import java.util.Map;
 
@@ -25,4 +28,22 @@ public interface HospitalService {
      */
     Hospital getByHoscode(String hoscode);
 
+
+    /**
+     * 分页数据
+     */
+    Page<Hospital> selectPage(Integer page , Integer limit, HospitalQueryVo hospitalSetQueryVo);
+
+
+    /**
+     * 更新上线状态
+     */
+    void updateStatus(String id, Integer status);
+
+    /**
+     * 医院详细
+     * @param id
+     * @return
+     */
+    Map<String , Object> show(String id);
 }

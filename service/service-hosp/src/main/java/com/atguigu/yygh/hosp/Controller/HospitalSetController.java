@@ -3,17 +3,20 @@ package com.atguigu.yygh.hosp.Controller;
 import com.alibaba.excel.util.StringUtils;
 import com.atguigu.yygh.common.result.Result;
 import com.atguigu.yygh.common.utils.MD5;
+import com.atguigu.yygh.hosp.service.HospitalService;
 import com.atguigu.yygh.hosp.service.HospitalSetService;
+import com.atguigu.yygh.model.hosp.Hospital;
 import com.atguigu.yygh.model.hosp.HospitalSet;
+import com.atguigu.yygh.vo.hosp.HospitalQueryVo;
 import com.atguigu.yygh.vo.hosp.HospitalSetQueryVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.ibatis.annotations.Delete;
+import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.service.Contact;
 
 import java.util.List;
 import java.util.Random;
@@ -22,9 +25,12 @@ import java.util.Random;
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet")
 @CrossOrigin   // 允许跨域访问
+@Slf4j
 public class HospitalSetController {
     @Autowired
     private HospitalSetService hospitalSetService;
+    @Autowired
+    private HospitalService HospitalService;
 
     @ApiOperation("获取所有配置")
     @GetMapping("findAll")
@@ -45,12 +51,13 @@ public class HospitalSetController {
     }
 
     //3 条件查询带分页
-    @ApiOperation("分页设置")
+    @ApiOperation("分页显示所有设置")
     @PostMapping("findPageHospSet/{current}/{limit}")
     public Result findPageHospSet(@PathVariable long current,
                                   @PathVariable long limit,
                                   @RequestBody
                                           (required = false) HospitalSetQueryVo hospitalSetQueryVo) {
+
         //创建page对象，传递当前页，每页记录数
         Page<HospitalSet> page = new Page<>(current, limit);
         //构建条件
@@ -94,6 +101,18 @@ public class HospitalSetController {
         }
     }
 
+
+    /**
+     * @return 批量删除，返回信息
+     */
+    @ApiOperation("批量删除医院设置")
+    @DeleteMapping("/batchRemove")
+    public Result batchRemove(@RequestBody List<Long> list) {
+        hospitalSetService.removeByIds(list);
+        return Result.ok();
+    }
+
+
     /**
      * @param id 医院id
      * @return 返回医院信息
@@ -116,15 +135,7 @@ public class HospitalSetController {
         }
     }
 
-    /**
-     * @return 批量删除，返回信息
-     */
-    @ApiOperation("批量删除医院设置")
-    @DeleteMapping("/batchRemove")
-    public Result batchRemove(@RequestBody List<Long> list) {
-        hospitalSetService.removeByIds(list);
-        return Result.ok();
-    }
+
 
     /**
      * @param id     医院设置的id
@@ -153,4 +164,5 @@ public class HospitalSetController {
         // TOOD 发送短信
         return Result.ok();
     }
+
 }

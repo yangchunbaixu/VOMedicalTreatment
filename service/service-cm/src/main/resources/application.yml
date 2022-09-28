@@ -32,9 +32,9 @@ spring:
         min-idle: 0
 
 #  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: 127.0.0.1:8848
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 #  # mongodb地址
 #  data:
 #    mongodb:
