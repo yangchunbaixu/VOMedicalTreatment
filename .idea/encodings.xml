@@ -6,11 +6,15 @@
     <file url="file://$PROJECT_DIR$/common/service-util/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hospital-manage/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server-gateway/src/main/resources/application.properties" charset="GBK" />
     <file url="file://$PROJECT_DIR$/service-client/service-cmn-client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service-client/service-cmn-client/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service/service-cm/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service/service-cm/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service/service-hosp/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service/service-hosp/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-msm/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-user/src/main/java" charset="UTF-8" />
   </component>
 </project>

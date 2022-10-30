@@ -101,6 +101,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         for (Map.Entry<String,List<Department>> entry : collect.entrySet()){
             // 大科室编号
             String bigCode = entry.getKey();
+            List<Department> deparment1List = entry.getValue();
             // 大科室编号要对应全局数据
             List<Department> bigCodeValue = entry.getValue();
             DepartmentVo departmentVo = new DepartmentVo();
@@ -109,11 +110,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 
             // 封装小科室
             List<DepartmentVo> childern = new ArrayList<>();
-            for (DepartmentVo depart : childern) {
+            for (Department depart : deparment1List) {
                 DepartmentVo departmentVo1 = new DepartmentVo();
                 departmentVo1.setDepcode(depart.getDepcode());
                 departmentVo1.setDepname(depart.getDepname());
-                childern.add(depart);
+                childern.add(departmentVo1);
             }
 
             // 把小科室放到大科室下面
@@ -121,5 +122,14 @@ public class DepartmentServiceImpl implements DepartmentService {
             result.add(departmentVo);
         }
         return result;
+    }
+
+    @Override
+    public String getDepName(String hoscode, String depcode) {
+        Department department = departmentRepository.getDepartmentByHoscodeAndDepcode(hoscode,depcode);
+        if (department != null){
+            return department.getDepname();
+        }
+        return null;
     }
 }

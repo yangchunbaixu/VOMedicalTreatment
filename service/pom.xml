@@ -12,6 +12,8 @@
     <modules>
         <module>service-hosp</module>
         <module>service-cm</module>
+        <module>service-user</module>
+        <module>service-msm</module>
     </modules>
     <artifactId>service</artifactId>
 

@@ -4,14 +4,16 @@ import com.atguigu.yygh.common.result.Result;
 import com.atguigu.yygh.hosp.service.DepartmentService;
 import com.atguigu.yygh.vo.hosp.DepartmentVo;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 @RequestMapping("/admin/hosp/department")
+@Slf4j
 public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;

@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/admin/hosp/hospital")
-@CrossOrigin   // 允许跨域访问
+//@CrossOrigin   // 允许跨域访问
 @Slf4j
 public class HospitalController {
     @Autowired
