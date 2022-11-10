@@ -1,6 +1,7 @@
 package com.atguigu.yygh.user.Controller;
 
 import com.atguigu.yygh.common.result.Result;
+import com.atguigu.yygh.common.utils.IpUtil;
 import com.atguigu.yygh.user.service.UserInfoService;
 import com.atguigu.yygh.vo.user.LoginVo;
 import io.swagger.annotations.Api;
@@ -26,7 +27,7 @@ public class UserInfoApiController {
     @ApiOperation(value = "会员登录")
     @PostMapping("login")
     public Result login(@RequestBody LoginVo loginVo, HttpServletRequest request) {
-//        loginVo.setIp(IpUtils.getIpAddr(request));
+        loginVo.setIp(IpUtil.getIpAddr(request));
         Map<String, Object> info = userInfoService.login(loginVo);
         return Result.ok(info);
     }

@@ -11,6 +11,8 @@ import com.atguigu.yygh.vo.user.LoginVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -19,6 +21,9 @@ import java.util.Map;
 @Slf4j
 @Service
 public class UserInfoServiceImpl  extends ServiceImpl<UserInfoMapper, UserInfo> implements UserInfoService {
+    @Autowired
+    private RedisTemplate<String,String> redisTemplate;
+
     @Override
     public Map<String, Object> login(LoginVo loginVo) {
         String phone = loginVo.getPhone();
@@ -27,6 +32,13 @@ public class UserInfoServiceImpl  extends ServiceImpl<UserInfoMapper, UserInfo> 
         // 检验参数
         if (StringUtils.isEmpty(phone) || StringUtils.isEmpty(code)) {
             throw new YyghException(ResultCodeEnum.PARAM_ERROR);
+        }
+
+
+        //校验校验验证码   开启验证码
+        String mobleCode = redisTemplate.opsForValue().get(phone);
+        if(!code.equals(mobleCode)) {
+            throw new YyghException(ResultCodeEnum.CODE_ERROR);
         }
 
         // 手机号被使用

@@ -14,5 +14,11 @@
       <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
       <jdbc-url>mongodb://localhost:27017</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="@172.16.1.12" uuid="ed8e95a6-af6b-4852-bd21-9b97c3464933">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://172.16.1.12:1433</jdbc-url>
+    </data-source>
   </component>
 </project>

@@ -8,6 +8,7 @@ import com.atguigu.yygh.common.result.ResultCodeEnum;
 import com.atguigu.yygh.enums.DictEnum;
 import com.atguigu.yygh.hosp.mapper.HospitalSetMapper;
 import com.atguigu.yygh.hosp.repository.HospitalRepository;
+import com.atguigu.yygh.hosp.service.DepartmentService;
 import com.atguigu.yygh.hosp.service.HospitalService;
 import com.atguigu.yygh.model.cmn.Dict;
 import com.atguigu.yygh.model.hosp.Hospital;
@@ -38,6 +39,9 @@ public class HospitalServiceImpl implements HospitalService {
     private HospitalSetMapper hospitalSetMapper;
     @Autowired
     private DictFeignClient dictFeignClient;
+    @Autowired
+    private DepartmentService departmentService;
+
     /**
      * 上传医院设置
      *
@@ -170,6 +174,29 @@ public class HospitalServiceImpl implements HospitalService {
             return hospitalByHoscode.getHosname();
         }
         return "";
+    }
+
+    /**
+     * 根据医院名称获取医院列表
+     * @param hosname
+     * @return
+     */
+    @Override
+    public List<Hospital> findByHosname(String hosname) {
+        return hospitalRepository.findHospitalByHosnameLike(hosname);
+    }
+
+    @Override
+    public Map<String, Object> item(String hoscode) {
+        Map<String,Object> result = new HashMap<>();
+        // 医院详情
+        Hospital hospital = this.setHospitalHosType(this.getByHoscode(hoscode));
+        result.put("hospital",hospital);
+        result.put("bookingRule",hospital.getBookingRule());
+        //不需要重复返回
+        hospital.setBookingRule(null);
+
+        return result;
     }
 
     // 获取查询list集合，遍历进行医院等级封装
