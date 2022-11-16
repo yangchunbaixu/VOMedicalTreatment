@@ -32,6 +32,12 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
 
     private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
+    /**
+     * 路径的规则
+     * @param exchange
+     * @param chain
+     * @return
+     */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();

@@ -1,0 +1,23 @@
+server:
+  port: 8205
+spring:
+  application:
+    name: service-oss
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  # nacos服务
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+aliyun:
+  oss:
+    # 路径
+    endpoint: yyghfuwpingtai.oss-cn-guangzhou.aliyuncs.com
+    # key
+    accessKeyId: LTAI5t9RHHLbHSAQ6BaqbFjz
+    # scret
+    secret:  Ph3epuHCS2PfuEQh2ggJPPyNRMPy3H
+    # 对象存储的名称
+    bucket: yyghfuwpingtai
